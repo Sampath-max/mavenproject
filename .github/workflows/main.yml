@@ -14,9 +14,5 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-      - name: compiling the maven
-        run: mvn clean compile
-      - name: executing the maven
-        run: mvn test
       - name: cleaning and genetrate the packages
-        run: mvn package
+        run: mvn clean package
