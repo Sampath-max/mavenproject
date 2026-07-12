@@ -1,0 +1,22 @@
+name:
+on:
+  push:
+    branches: ["master"]
+jobs:
+  maven-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: cloning the maven project
+        uses: actions/checkout@v4
+      - name: installing the maven
+        uses:  actions/setup-java@v5.5.0
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: compiling the maven
+        run: mvn clean compile
+      - name: executing the maven
+        run: mvn test
+      - name: cleaning and genetrate the packages
+        run: mvn package
