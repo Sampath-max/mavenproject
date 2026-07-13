@@ -13,8 +13,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: compiling the source code 
-        run: javac Test.java
-      - name: executing the source code 
-        run: java Test
+          cache: maven
+      - name: generating the build
+        run: mvn package
     
