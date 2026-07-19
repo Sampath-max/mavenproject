@@ -11,7 +11,7 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
   maven:
-    needs: java
+    needs: new-job
     runs-on: ubuntu-latest
     steps:
       - name: cloning the repository
@@ -19,7 +19,7 @@ jobs:
       - name: generating the build
         run: mvn package
   new-job:
-    needs: maven
+    needs: java
     runs-on: ubuntu-latest
     steps:
       - name: checking the version
