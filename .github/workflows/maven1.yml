@@ -1,0 +1,27 @@
+name: maven-project
+on:
+  workflow_dispatch:
+jobs:
+  java:
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup-java
+        uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+  maven:
+    needs: java
+    runs-on: ubuntu-latest
+    steps:
+      - name: cloning the repository
+        uses: actions/checkout@v4
+      - name: generating the build
+        run: mvn package
+  new-job:
+    needs: maven
+    runs-on: ubuntu-latest
+    steps:
+      - name: checking the version
+        run: mvn --version
+ 
